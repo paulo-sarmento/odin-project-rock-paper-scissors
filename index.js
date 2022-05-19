@@ -2,22 +2,37 @@ const displayPlayerChoice = document.querySelector('#playerChoice')
 const displayPcChoice = document.querySelector('#pcChoice')
 
 const playerChoices = document.querySelectorAll('.playerChoices > .btn')
-const pcChoices = document.querySelectorAll('.pcChoices > .btn')
+const pcChoices = document.querySelectorAll('.pcChoices > .btn > img')
+
+const pcChoicesBtn = document.querySelectorAll('.pcChoices > .btn')
+
+const result = document.querySelector('.result')
+const winner = document.querySelector('.winner')
 
 //pega o nó filho do botão clicado neste caso o <img> e passa o seu src como parámetro da função showPlayerChoice e
 //também passa como parámetro da função playRound o atributo alt da imagem clicado. ou seja. pedra, papel ou tesoura
 let getPlayerChoice = (e) => {
     let btn = e.currentTarget
-    isActive(btn)
+    activeChoice(playerChoices, btn)
     let img = btn.children
-    let choice = img[0].getAttribute("alt")
-    showPlayerChoice(img[0].src)
-    playRound(choice)
+    let playerChoice = img[0].getAttribute("alt")
+    showChoice(displayPlayerChoice, img[0].src)
+    playRound(playerChoice)
+}
+
+let getPcChoice = (computerChoice) => {
+    console.log(pcChoices.parentNode)
+    pcChoices.forEach(choice => {
+        if(computerChoice == choice.getAttribute('alt')) {
+            showChoice(displayPcChoice, choice.src)
+            activeChoice(pcChoicesBtn, choice.parentNode)
+        }
+    })
 }
 
 //recebe como parámetro um src e altera o src da imagem da escolha do usuário
-let showPlayerChoice = (src) => {
-    return displayPlayerChoice.src = src
+let showChoice = (display, src) => {
+    return display.src = src
 }
 
 //adiciona escutador de eventos em cada botão de escolha do jogador e chama a função getPlayerChoice
@@ -25,24 +40,14 @@ let playerChoice = playerChoices.forEach(btn => {
     btn.addEventListener('click', getPlayerChoice)
 })
 
-let isActive = (btn) => {
-    btn.classList.add('active')
-    let arr = Array.from(playerChoices)
-    
-    let filterPlayerChoice = arr.filter(btn => {
-        let btnClassList = btn.classList.value
-        let check = /active/.test(btnClassList)
-        return check
+let activeChoice = (array, btn) => {
+    let arr = Array.from(array)
+
+    arr.forEach(btn => {
+        btn.classList.remove('active')
     })
 
-    console.log(filterPlayerChoice)
-
-    if(filterPlayerChoice.length > 1) {
-        filterPlayerChoice.forEach(btn => {
-            btn.classList.remove('active')
-        })
-    }
-    btn.classList.add('active')
+    setTimeout(() => btn.classList.add('active'), 100) 
 }
 
 let choices = ['rock', 'paper', 'scissors']
@@ -57,55 +62,60 @@ const pcScore = document.querySelector('#pcScore')
 
 const playRound = (playerChoice) => {
     let computerChoice = computerPlay()
+    getPcChoice(computerChoice)
+    playerChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)
+    console.log(playerChoice)
+    computerChoice = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)
+
     switch (playerChoice) {
-        case 'rock':
-            if (computerChoice === 'scissors') {
-                console.log(`You Win! ${playerChoice} beats ${computerChoice}`);
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+        case 'Rock':
+            if (computerChoice === 'Scissors') {
+                result.innerText = `${playerChoice} and ${computerChoice}`
+                winner.innerText = 'Winner is: Player'
                 playerScoreCount++;
                 playerScore.innerText = playerScoreCount
             }
             else if (computerChoice === playerChoice) {
-                console.log(`${computerChoice} and ${playerChoice} = draw`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+                result.innerText = `${playerChoice} and ${computerChoice}. It's a tie.`
+                winner.innerText = 'Winner is:'
             } else {
-                console.log(`You Lose! ${computerChoice} beats ${playerChoice}`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+                result.innerText = `${playerChoice} and ${computerChoice}`
+                winner.innerText = 'Winner is: Machine'
                 pcScoreCount++
                 pcScore.innerText = pcScoreCount
             }
         break;
-        case 'paper':
-            if (computerChoice === 'rock') {
-                console.log(`You Win! ${playerChoice} beats ${computerChoice}`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+        case 'Paper':
+            if (computerChoice === 'Rock') {
+                result.innerText = `${playerChoice} and ${computerChoice}`
+                winner.innerText = 'Winner is: Player'
                 playerScoreCount++;
                 playerScore.innerText = playerScoreCount
             } 
             else if (computerChoice === playerChoice) {
-                console.log(`${computerChoice} and ${playerChoice} = draw`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+                result.innerText = `${playerChoice} and ${computerChoice}. It's a tie.`
+                winner.innerText = 'Winner is:'
             } else {
-                console.log(`You Lose! ${computerChoice} beats ${playerChoice}`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+                result.innerText = `${playerChoice} and ${computerChoice}.`
+                winner.innerText = 'Winner is: Machine'
                 pcScoreCount++
                 pcScore.innerText = pcScoreCount
             }
         break;
-        case 'scissors':
-            if (computerChoice === 'paper') {
-                console.log(`You Win! ${playerChoice} beats ${computerChoice}`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+        case 'Scissors':
+            if (computerChoice === 'Paper') {
+                result.innerText = `${playerChoice} and ${computerChoice}`
+                winner.innerText = 'Winner is: Player'
                 playerScoreCount++;
                 playerScore.innerText = playerScoreCount
             } 
             
             else if (computerChoice === playerChoice) {
-                console.log(`${computerChoice} and ${playerChoice} = draw`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+                result.innerText = `${playerChoice} and ${computerChoice}. It's a tie.`
+                winner.innerText = 'Winner is:'
             } else {
-                console.log(`You Lose! ${computerChoice} beats ${playerChoice}`)
-                console.log(`escolha do jogador ${playerChoice} escolha da máquina ${computerChoice}`)
+                result.innerText = `${playerChoice} and ${computerChoice}.`
+                winner.innerText = 'Winner is: Machine'
                 pcScoreCount++
                 pcScore.innerText = pcScoreCount
             }
