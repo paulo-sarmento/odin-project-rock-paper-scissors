@@ -12,42 +12,20 @@
     </title>
 </head>
 <body>
-    <section class="rps">
-        <div class="container">
-            <div class="playerContainer">
-                <div class="infoScore">
-                    <p>You</p>
-                    <p>Score: 
-                        <span id="playerScore">0</span>
-                    </p>
-                </div>
-                <div class="playerChoice">
-                    <img src="images/rock_icon.png" id="playerChoice">
-                </div>
-                <div class="playerChoices">
-                    <button class="btn">
-                        <img src="images/rock_icon.png" alt="rock">
-                    </button>
-                    <button class="btn">
-                        <img src="images/paper_icon.png" alt="paper">
-                    </button>
-                    <button class="btn">
-                        <img src="images/scissors_icon.png" alt="scissors">
-                    </button>
-                </div>
+  <section>
+      <div class="container">
+
+        <div class="playerContainer">
+            <div class="infoScore">
+                <p>You</p>
+                <p>Score: 
+                    <span id="playerScore">0</span>
+                </p>
             </div>
-            <p>VS</p>
-            <div class="pcContainer">
-                <div class="infoScore">
-                    <p>Machine</p>
-                    <p>Score: 
-                        <span id="pcScore">0</span>
-                    </p>
-                </div>
-                <div class="pcChoice">
-                    <img src="images/rock_icon.png" id="pcChoice">
-                </div>
-                <div class="pcChoices">
+            <div class="playerPanel">
+                <img src="images/rock_icon.png" id="playerPick">
+            </div>
+            <div class="playerOptions">
                 <button class="btn">
                     <img src="images/rock_icon.png" alt="rock">
                 </button>
@@ -59,12 +37,40 @@
                 </button>
             </div>
         </div>
-        <div class="info">
-            <h2 class="result">Rock and Rock. It's a tie.</h1>
-                <h1 class="winner">Winner is: </h1>
+
+        <p>VS</p>   
+
+        <div class="machineContainer">
+            <div class="infoScore">
+                <p>Machine</p>
+                <p>Score: 
+                    <span id="pcScore">0</span>
+                </p>
             </div>
-        </div>
-    </section>
-        <script src="index.js"></script>
-    </body>
-    </html>
+            <div class="machinePanel">
+                <img src="images/rock_icon.png" id="machinePick">
+            </div>
+            <div class="machineOptions">
+                <button class="btn">
+                    <img src="images/rock_icon.png" alt="rock">
+                </button>
+                <button class="btn">
+                    <img src="images/paper_icon.png" alt="paper">
+                </button>
+                <button class="btn">
+                    <img src="images/scissors_icon.png" alt="scissors">
+                </button>
+            </div>
+      </div>
+
+    <div class="info">
+      <h2 class="result">Rock and Rock. It's a tie.</h1>
+      <h1 class="winner">Round winner is: </h1>
+      <h1 class="gameWinner"></h1>
+    </div>
+    </div>
+
+  </section>
+  <script src="index.js"></script>
+</body>
+</html>

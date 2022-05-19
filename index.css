@@ -53,8 +53,8 @@ button {
   margin: 0;
 }
 
-.playerChoice,
-.pcChoice {
+.playerPanel,
+.machinePanel {
   background: #fff;
   padding: 8em 4em;
   border: 3px solid black;
@@ -64,14 +64,14 @@ button {
   align-items: center;
 }
 
-.playerChoice img,
-.pcChoice img {
+.playerPanel img,
+.machinePanel img {
   width: 150px;
   height: 150px;
 }
 
-.playerChoices,
-.pcChoices {
+.playerOptions,
+.machineOptions {
   display: flex;
   align-items: center;
   justify-content: space-between;
