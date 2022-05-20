@@ -81,3 +81,26 @@ button {
 .active {
   border: 3px solid black;
 }
+
+@media only screen and (max-width: 576px) {
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+  }
+  .container {
+    min-width: 280px;
+    max-width: 576px;
+    flex-direction: column;
+  }
+  .container p {
+    font-size: 1.6em;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
