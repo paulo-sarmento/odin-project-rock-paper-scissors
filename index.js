@@ -57,23 +57,22 @@ let pcScoreCount = 0
 
 const playerScore = document.querySelector('#playerScore')
 const pcScore = document.querySelector('#pcScore')
-const gameWinner = document.querySelector('.gameWinner')
 
-const checkWinner = (playerScore, machineScore, displayPlayerScore, displayMachineScore) => {
-  if(playerScore == 5) {
-    gameWinner.innerText = 'Game Winner is You!'
-    playerScore = 0
-    machineScore = 0
-    displayPlayerScore.innerText = playerScore
-    displayMachineScore.innerText = machineScore
+const checkWinner = (displayPlayerScore, displayMachineScore) => {
+  if(playerScoreCount == 5) {
+    alert('Game Winner is You!')
+    playerScoreCount = 0
+    pcScoreCount = 0
+    displayPlayerScore.innerText = playerScoreCount
+    displayMachineScore.innerText = pcScoreCount
   }
-  if(machineScore == 5) {
-    gameWinner.innerText = 'Game Winner is Machine!'
-    playerScore = 0
-    machineScore = 0
-    displayPlayerScore.innerText = playerScore
-    displayMachineScore.innerText = machineScore
-  } 
+  if(pcScoreCount == 5) {
+    alert('Game Winner is Machine!')
+    playerScoreCount = 0
+    pcScoreCount = 0
+    displayPlayerScore.innerText = playerScoreCount
+    displayMachineScore.innerText = pcScoreCount
+  }
 }
 
 const playRound = (playerPick) => {
@@ -84,7 +83,6 @@ const playRound = (playerPick) => {
   playerPick = playerPick.charAt(0).toUpperCase() + playerPick.slice(1)
   machinePick = machinePick.charAt(0).toUpperCase() + machinePick.slice(1)
 
-  
   switch (playerPick) {
     case 'Rock':
       if (machinePick === 'Scissors') {
@@ -139,7 +137,7 @@ const playRound = (playerPick) => {
     break;
   }
 
-  checkWinner(playerScoreCount, pcScoreCount, playerScore, pcScore)
+  checkWinner(playerScore, pcScore)
 }
 
 
