@@ -62,17 +62,23 @@ const gameWinner = document.querySelector('.gameWinner')
 const checkWinner = (playerScore, machineScore, displayPlayerScore, displayMachineScore) => {
   if(playerScore == 5) {
     gameWinner.innerText = 'Game Winner is You!'
-    playerScore = 0
-    machineScore = 0
-    displayPlayerScore.innerText = playerScore
-    displayMachineScore.innerText = machineScore
+    setTimeout(() => {
+      playerScore = 0
+      machineScore = 0
+      displayPlayerScore.innerText = playerScore
+      displayMachineScore.innerText = machineScore
+    }, 150);
   }
   if(machineScore == 5) {
     gameWinner.innerText = 'Game Winner is Machine!'
     playerScore = 0
     machineScore = 0
-    displayPlayerScore.innerText = playerScore
-    displayMachineScore.innerText = machineScore
+    setTimeout(() => {
+      playerScore = 0
+      machineScore = 0
+      displayPlayerScore.innerText = playerScore
+      displayMachineScore.innerText = machineScore
+    }, 150);
   } 
 }
 
