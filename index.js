@@ -62,23 +62,17 @@ const gameWinner = document.querySelector('.gameWinner')
 const checkWinner = (playerScore, machineScore, displayPlayerScore, displayMachineScore) => {
   if(playerScore == 5) {
     gameWinner.innerText = 'Game Winner is You!'
-    setTimeout(() => {
-      playerScore = 0
-      machineScore = 0
-      displayPlayerScore.innerText = playerScore
-      displayMachineScore.innerText = machineScore
-    }, 150);
+    playerScore = 0
+    machineScore = 0
+    displayPlayerScore.innerText = playerScore
+    displayMachineScore.innerText = machineScore
   }
   if(machineScore == 5) {
     gameWinner.innerText = 'Game Winner is Machine!'
     playerScore = 0
     machineScore = 0
-    setTimeout(() => {
-      playerScore = 0
-      machineScore = 0
-      displayPlayerScore.innerText = playerScore
-      displayMachineScore.innerText = machineScore
-    }, 150);
+    displayPlayerScore.innerText = playerScore
+    displayMachineScore.innerText = machineScore
   } 
 }
 
@@ -146,28 +140,9 @@ const playRound = (playerPick) => {
   }
 
   checkWinner(playerScoreCount, pcScoreCount, playerScore, pcScore)
-
 }
-          
-          
-          // for (let i = 0; i < 5; i++) {
-            //     let playerChoice = playerPlay()
-            //     let computerChoice = computerPlay()
-            //     playRound(playerChoice, computerChoice)
-            // }
-            
-            // if (playerScoreCount > computerScore) {
-              //     console.log(`Player Score: ${playerScore}. Computer Score: ${computerScore}. Player is the Winner`)
-              // } else if (playerScore == computerScore) {
-                //     console.log(`Player Score: ${playerScore}. Computer Score: ${computerScore}. Draw`)
-                // } else {
-                  //     console.log(`Player Score: ${playerScore}. Computer Score: ${computerScore}. Computer is the Winner`)
-                  // }
-                  
-                  // }
-                  
-                  //adiciona escutador de eventos em cada botão de escolha do jogador e chama a função getPlayerChoice   
-                  
+
+
 playerOptions.forEach(option => {
-option.addEventListener('click', getPlayerPick)
+  option.addEventListener('click', getPlayerPick)
 })
